@@ -20,6 +20,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
+  'GET /api/install': 'ShopController.installShop',
+  'GET /api/installed': 'ShopController.shopInstalled',
+  'GET /api/payment': 'ShopController.paymentAccepted',
+  'GET /api/isappinstalled': 'ShopController.isAppInstalled',
 
 
   /***************************************************************************

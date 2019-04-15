@@ -148,9 +148,9 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+       allowOrigins: [
+          'https://smarttracker.shopiapps.com',
+       ]
     },
 
   },
@@ -250,10 +250,9 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+     onlyAllowOrigins: [
+       'https://smarttracker.shopiapps.com'
+     ],
 
 
     /***************************************************************************
@@ -337,7 +336,7 @@ module.exports = {
   * this, just try deploying without setting it and see if it works.)       *
   *                                                                         *
   ***************************************************************************/
-  // port: 80,
+  port: 2360,
 
 
 
@@ -371,8 +370,8 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://example.com',
-    internalEmailAddress: 'support@example.com',
+    baseUrl: 'https://smarttracker.shopiapps.com',
+    internalEmailAddress: 'support@shopiapps.com',
 
     // mailgunDomain: 'mg.example.com',
     // mailgunSecret: 'key-prod_fake_bd32301385130a0bafe030c',
@@ -389,6 +388,21 @@ module.exports = {
     // ```
     //--------------------------------------------------------------------------
 
+  },
+
+  //Shopify Config
+  //You should add those variables to your production.js for production purposes
+  shopifyConfig: {
+    shopify_api_key: 'xxx', // Your API key
+    shopify_shared_secret: 'xxx', // Your Shared Secret
+    redirect_uri: 'https://smarttracker.shopiapps.com/api/installed',
+    shopify_scope: ['read_products','write_products']
+  },
+  shopifyPayment: {
+    test: false,
+    price: 9.95,
+    trialDays: 2,
+    returnUrl: "https://smarttracker.shopiapps.com/api/payment",
   },
 
 

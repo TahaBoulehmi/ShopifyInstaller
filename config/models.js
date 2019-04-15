@@ -1,17 +1,17 @@
 /**
- * Default model settings
- * (sails.config.models)
- *
- * Your default, project-wide model settings. Can also be overridden on a
- * per-model basis by setting a top-level properties in the model definition.
- *
- * For details about all available model settings, see:
- * https://sailsjs.com/config/models
- *
- * For more general background on Sails model settings, and how to configure
- * them on a project-wide or per-model basis, see:
- * https://sailsjs.com/docs/concepts/models-and-orm/model-settings
- */
+* Default model settings
+* (sails.config.models)
+*
+* Your default, project-wide model settings. Can also be overridden on a
+* per-model basis by setting a top-level properties in the model definition.
+*
+* For details about all available model settings, see:
+* https://sailsjs.com/config/models
+*
+* For more general background on Sails model settings, and how to configure
+* them on a project-wide or per-model basis, see:
+* https://sailsjs.com/docs/concepts/models-and-orm/model-settings
+*/
 
 module.exports.models = {
 
@@ -53,7 +53,7 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
-  // migrate: 'alter',
+  migrate: 'alter',
 
 
   /***************************************************************************
@@ -83,6 +83,21 @@ module.exports.models = {
     // Plus, don't forget to configure MongoDB as your default datastore:
     // https://sailsjs.com/docs/tutorials/using-mongo-db
     //--------------------------------------------------------------------------
+  },
+
+  //Update Or Create
+  updateOrCreate: async function(criteria, values){
+    var self = this; // reference for use by callbacks
+    // If no values were specified, use criteria
+    if (!values) values = criteria.where ? criteria.where : criteria;
+
+    return this.findOne(criteria).then(function (result){
+      if(result){
+        return self.update(criteria, values);
+      }else{
+        return self.create(values);
+      }
+    });
   },
 
 
